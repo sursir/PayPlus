@@ -15,7 +15,7 @@ class CreateGatewaysTable extends Migration
 		Schema::create('gateways', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('name'); //接口名称
-			$table->string('description'); //接口描述
+			$table->string('remark'); //接口描述
 			$table->integer('currency'); //货币
 			$table->json('configuration'); //配置信息存 JSON
 			$table->tinyInteger('status'); //状态 0:不可用 1:可用

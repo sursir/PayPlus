@@ -16,7 +16,7 @@ class CreateAppsTable extends Migration
 			$table->increments('id');
 			$table->integer('uid')->index('idx_uid');
 			$table->string('name');
-			$table->string('description');
+			$table->string('remark');
 			$table->string('secret')->unique()->index('idx_app_secret');
 			$table->string('token')->unqiue()->index('idx_app_token');
 			$table->softDeletes();
