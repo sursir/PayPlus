@@ -15,10 +15,9 @@ class CreateAppsTable extends Migration
 		Schema::create('apps', function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('uid')->index('idx_uid');
+			$table->uuid('uuid')->index('idx_uuid');
 			$table->string('name');
 			$table->string('remark');
-			$table->string('secret')->unique()->index('idx_app_secret');
-			$table->string('token')->unqiue()->index('idx_app_token');
 			$table->softDeletes();
 			$table->timestamps();
 		});
