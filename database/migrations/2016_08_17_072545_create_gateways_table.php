@@ -19,8 +19,8 @@ class CreateGatewaysTable extends Migration
 			$table->integer('currency'); //货币
 			$table->mediumText('configuration'); //配置信息存 JSON
 			$table->tinyInteger('status'); //状态 0:不可用 1:可用
-			$table->softDeletes();
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 	

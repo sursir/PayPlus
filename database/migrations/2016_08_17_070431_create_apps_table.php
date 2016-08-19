@@ -18,8 +18,8 @@ class CreateAppsTable extends Migration
 			$table->uuid('uuid')->index('idx_uuid');
 			$table->string('name');
 			$table->string('remark');
-			$table->softDeletes();
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 	

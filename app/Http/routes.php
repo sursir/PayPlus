@@ -12,5 +12,18 @@
 */
 
 $app->get('/', function () use ($app) {
-    return $app->version();
+	return $app->version();
+});
+
+$app->group(['prefix' => 'auth', 'namespace' => '\App\Http\Controllers'], function () use ($app) {
+	
+	$app->post('/signin', 'AuthController@signin');
+	$app->put('/refresh', ['middleware' => 'jwt.refresh', 'uses' => 'AuthController@refresh']);
+	
+});
+
+$app->group(['prefix' => 'user', 'middleware' => 'jwt.auth', 'namespace' => '\App\Http\Controllers'], function () use ($app) {
+	
+	$app->get('/profile', 'UserController@profile');
+	
 });

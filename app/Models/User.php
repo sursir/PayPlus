@@ -11,28 +11,28 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Model implements
 	JWTSubject,
-    AuthenticatableContract,
-    AuthorizableContract
+	AuthenticatableContract,
+	AuthorizableContract
 {
-    use Authenticatable, Authorizable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email',
-    ];
-
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-    ];
+	use Authenticatable, Authorizable;
+	
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = [
+		'email', 'secret', 'token'
+	];
+	
+	/**
+	 * The attributes excluded from the model's JSON form.
+	 *
+	 * @var array
+	 */
+	protected $hidden = [
+		'password',
+	];
 	
 	public function getJWTIdentifier()
 	{

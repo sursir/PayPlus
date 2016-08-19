@@ -24,8 +24,8 @@ class CreateTransactionsTable extends Migration
 			$table->integer('gateway')->unsigned();
 			$table->tinyInteger('notified');
 			$table->timestamp('notified_at');
-			$table->softDeletes();
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 	
