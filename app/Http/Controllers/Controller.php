@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Laravel\Lumen\Routing\Controller as BaseController;
 use Tymon\JWTAuth\JWTAuth;
+use Tymon\JWTAuth\Manager;
 
 class Controller extends BaseController
 {
@@ -11,16 +12,22 @@ class Controller extends BaseController
 	 * @var JWTAuth
 	 */
 	protected $jwt;
-
+	
+	/**
+	 * @var Manager
+	 */
+	protected $manager;
 	
 	/**
 	 * Controller constructor.
 	 *
 	 * @param JWTAuth $jwt
+	 * @param Manager $manager
 	 */
-	public function __construct(JWTAuth $jwt)
+	public function __construct(JWTAuth $jwt, Manager $manager)
 	{
 		$this->jwt = $jwt;
+		$this->manager = $manager;
 	}
 	
 	/**

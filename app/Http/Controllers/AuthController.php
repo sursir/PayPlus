@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use Tymon\JWTAuth\JWTAuth;
 
 class AuthController extends Controller
 {
 	
 	private $_lang = [
 		'signin_incorrect' => '用户名或密码错误',
-		'token_incorrect' => 'TOKEN 验证失败'
+		'token_incorrect'  => 'TOKEN 验证失败',
+		'signout_success' => '退出登陆成功',
+		'signout_error' => '退出登陆失败'
 	];
 	
 	
@@ -40,27 +41,47 @@ class AuthController extends Controller
 			return $this->json([], 403, $this->_lang['signin_incorrect']);
 			
 		} catch (JWTException $e) {
-			return $this->json([], 500, $e->getMessage());
+			return $this->json([], $e->getCode(), $e->getMessage());
 		}
 		
 	}
 	
-	public function signup()
-	{
-		
-	}
+//	public function signup()
+//	{
+//
+//	}
 	
 	public function signout()
 	{
-		
+		try {
+			
+			if ($this->manager->invalidate($this->jwt->getToken())) {
+				return $this->json([
+					'token' => $this->_lang['signout_success']
+				]);
+			}
+			
+			return $this->json([
+				'token' => $this->_lang['signout_failed']
+			]);
+			
+			
+		} catch (JWTException $e) {
+			return $this->json([], 500, $e->getMessage());
+		}
 	}
 	
+	/**
+	 * 刷新 TOKEN
+	 *
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
 	public function refresh()
 	{
 		try {
-
+			
 			return $this->json([
-				'token' => $this->jwt->refresh()
+				'token' => $this->manager->refresh($this->jwt->getToken())->get()
 			]);
 
 		} catch (JWTException $e) {
