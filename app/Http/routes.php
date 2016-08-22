@@ -18,6 +18,7 @@ $app->get('/', function () use ($app) {
 $app->group(['prefix' => 'auth', 'namespace' => '\App\Http\Controllers'], function () use ($app) {
 	
 	$app->post('/signin', 'AuthController@signin');
+	$app->put('/signout', 'AuthController@signout');
 	$app->put('/refresh', 'AuthController@refresh');
 	
 });

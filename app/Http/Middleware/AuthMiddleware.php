@@ -14,9 +14,7 @@ class AuthMiddleware
 	
 	private $_jwt;
 	
-	private $_lang = [
-		'token_not_provider' => '没有发现 Token'
-	];
+
 	
 	public function __construct(JWTAuth $jwt)
 	{
@@ -29,7 +27,7 @@ class AuthMiddleware
 		if (!$this->_jwt->parser()->setRequest($request)->hasToken()) {
 			return response()->json([
 				'code' => 404,
-				'msg'  => $this->_lang['token_not_provider']
+				'msg'  => 'Token not provided'
 			]);
 		}
 		

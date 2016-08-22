@@ -46,11 +46,11 @@ class AuthController extends Controller
 		
 	}
 	
-//	public function signup()
-//	{
-//
-//	}
-	
+	/**
+	 * 退出登录
+	 *
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
 	public function signout()
 	{
 		try {
@@ -89,6 +89,9 @@ class AuthController extends Controller
 		}
 	}
 	
+	/**
+	 * 待定
+	 */
 	public function retrieve()
 	{
 		
