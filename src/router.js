@@ -1,7 +1,7 @@
 import app from './components/app.vue'
 import none from './components/none.vue'
-import signin from './components/signin.vue'
-import apps from './components/apps.vue'
+import signin from './components/auth/signin.vue'
+import apps from './components/app/index.vue'
 
 export default function (router) {
   router.map({
@@ -17,7 +17,7 @@ export default function (router) {
       name: 'signin',
       component: signin
     },
-    '/apps': {
+    '/app': {
       name: 'apps',
       component: apps
     }
