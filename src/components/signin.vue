@@ -23,7 +23,6 @@
 </template>
 
 <script>
-  import { AUTH_SIGNIN } from '../config'
   export default {
     data () {
       return {
@@ -36,13 +35,13 @@
     },
     methods: {
       signin () {
-        this.$http.post(AUTH_SIGNIN, {
+        this.$http.post('auth/signin', {
           email: this.credentials.email,
           password: this.credentials.password
         }).then((resp) => {
           if (resp.status === 200) {
             window.localStorage.setItem('Token', resp.data.resp.token)
-            window.location.pathname = '/'
+            this.$router.go('/user/profile')
           }
         }, (resp) => {
           this.$set('error', resp.data.msg)

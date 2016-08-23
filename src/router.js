@@ -1,6 +1,7 @@
 import app from './components/app.vue'
 import none from './components/none.vue'
 import signin from './components/signin.vue'
+import profile from './components/profile.vue'
 
 export default function (router) {
   router.map({
@@ -15,6 +16,10 @@ export default function (router) {
     '/auth/signin': {
       name: 'signin',
       component: signin
+    },
+    '/user/profile': {
+      name: 'profile',
+      component: profile
     }
   })
   router.redirect({
