@@ -16,12 +16,22 @@ class CrosMiddleware
 	 */
 	public function handle($request, Closure $next)
 	{
-		$response = $next($request);
+		$headers = [
+			'Access-Control-Allow-Origin'      => '*',
+			'Access-Control-Allow-Methods'     => 'GET, HEAD, POST, PUT, DELETE, OPTIONS',
+			'Access-Control-Allow-Credentials' => 'true',
+			'Access-Control-Max-Age'           => '60',
+			'Access-Control-Allow-Headers'     => 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+		];
 		
-		$response->header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-		$response->header('Access-Control-Max-Age', 60);
-		$response->header('Access-Control-Allow-Origin', '*');
-		$response->header('Access-Control-Allow-Methods', 'GET, HEAD, POST, PUT, DELETE');
+		if ($request->isMethod('OPTIONS')) {
+			return response(null, 200, $headers);
+		}
+		
+		$response = $next($request);
+		foreach ($headers as $key => $value) {
+			$response->header($key, $value);
+		}
 		
 		return $response;
 	}

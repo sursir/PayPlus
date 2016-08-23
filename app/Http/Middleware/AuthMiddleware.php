@@ -14,7 +14,6 @@ class AuthMiddleware
 	
 	private $_jwt;
 	
-
 	
 	public function __construct(JWTAuth $jwt)
 	{
@@ -28,36 +27,16 @@ class AuthMiddleware
 			return response()->json([
 				'code' => 404,
 				'msg'  => 'Token not provided'
-			]);
+			], 404);
 		}
 		
 		try {
 			$this->_jwt->parseToken()->authenticate();
-		} catch (TokenBlacklistedException $e) {
-			return response()->json([
-				'code' => $e->getCode(),
-				'msg'  => $e->getMessage()
-			]);
-		} catch (TokenExpiredException $e) {
-			return response()->json([
-				'code' => $e->getCode(),
-				'msg'  => $e->getMessage()
-			]);
-		} catch (TokenInvalidException $e) {
-			return response()->json([
-				'code' => $e->getCode(),
-				'msg'  => $e->getMessage()
-			]);
-		} catch (TokenMismatchException $e) {
-			return response()->json([
-				'code' => $e->getCode(),
-				'msg'  => $e->getMessage()
-			]);
 		} catch (JWTException $e) {
 			return response()->json([
 				'code' => $e->getCode(),
 				'msg'  => $e->getMessage()
-			]);
+			], 401);
 		}
 		
 		return $next($request);
