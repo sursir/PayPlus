@@ -41,7 +41,7 @@
         }).then((resp) => {
           if (resp.status === 200) {
             window.localStorage.setItem('Token', resp.data.resp.token)
-            this.$router.go('/user/profile')
+            this.$router.go('/apps')
           }
         }, (resp) => {
           this.$set('error', resp.data.msg)

@@ -1,7 +1,7 @@
 import app from './components/app.vue'
 import none from './components/none.vue'
 import signin from './components/signin.vue'
-import profile from './components/profile.vue'
+import apps from './components/apps.vue'
 
 export default function (router) {
   router.map({
@@ -17,9 +17,9 @@ export default function (router) {
       name: 'signin',
       component: signin
     },
-    '/user/profile': {
-      name: 'profile',
-      component: profile
+    '/apps': {
+      name: 'apps',
+      component: apps
     }
   })
   router.redirect({
