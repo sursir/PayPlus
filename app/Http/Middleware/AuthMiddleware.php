@@ -27,11 +27,31 @@ class AuthMiddleware
 			return response()->json([
 				'code' => 404,
 				'msg'  => 'Token not provided'
-			], 404);
+			], 401);
 		}
 		
 		try {
 			$this->_jwt->parseToken()->authenticate();
+		} catch (TokenBlacklistedException $e) {
+			return response()->json([
+				'code' => $e->getCode(),
+				'msg'  => $e->getMessage()
+			], 401);
+		} catch (TokenExpiredException $e) {
+			return response()->json([
+				'code' => $e->getCode(),
+				'msg'  => $e->getMessage()
+			], 401);
+		} catch (TokenInvalidException $e) {
+			return response()->json([
+				'code' => $e->getCode(),
+				'msg'  => $e->getMessage()
+			], 401);
+		} catch (TokenMismatchException $e) {
+			return response()->json([
+				'code' => $e->getCode(),
+				'msg'  => $e->getMessage()
+			], 401);
 		} catch (JWTException $e) {
 			return response()->json([
 				'code' => $e->getCode(),
