@@ -48,7 +48,7 @@ Vue.http.interceptors.push((request, next) => {
 
 // 如果有 Token 了那么在 Header 里面跟上 Token
 router.beforeEach(function ({ to, next }) {
-  if (to.path !== '/auth/signin' && to.path !== '/') { //
+  if (to.path !== '/auth/signin' && to.path !== '/' && to.path !== '/404') { //
     let token = window.localStorage.getItem('Token')
     if (token) {
       Vue.http.headers.common['Authorization'] = 'Bearer ' + token
