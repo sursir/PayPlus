@@ -1,31 +1,44 @@
 <template>
-  <div class="bg">
+  <header>
     <div class="container">
-      <header>
-        <div class="logo">
+      <!--Header-->
+      <div class="header">
+        <div class="logo pull-left">
           <a v-link="{ path: '/' }">Pay Station</a>
         </div>
-        <div class="menu">
+        <div class="menu pull-right">
           <nav>
             <ul>
               <li><a v-link="{ path: '/' }">首 页</a></li>
               <li><a v-link="{ path: '/download' }">下 载</a></li>
-              <li><a v-link="{ path: '/auth/signin' }">登 录</a></li>
+              <li><a v-link="{ path: '/docs' }">文 档</a></li>
+              <li><a class="signin-btn" v-link="{ path: '/auth/signin' }">登 录</a></li>
             </ul>
           </nav>
         </div>
-      </header>
-
-      <main>
-        <div class="intro">
-          <h1>Pay Station</h1>
-          <p class="describe">
-            便捷支付，一触即达
-          </p>
-        </div>
-      </main>
+      </div>
+      <div class="clearfix"></div>
+      <!--Header End-->
+      <div class="introduce pull-left">
+        <h1>Pay Station</h1>
+        <p>便捷支付，一触即达</p>
+      </div>
     </div>
-  </div>
+    <div class="clearfix"></div>
+  </header>
+
+  <main>
+    <div class="container">
+      111
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      222
+    </div>
+  </footer>
+
 </template>
 <script>
   export default {
@@ -35,108 +48,87 @@
     methods: {
       init () {
         document.title = 'Pay Station'
-        document.querySelector('.bg').style.height = document.documentElement.clientHeight + 'px'
       }
     }
   }
 </script>
 <style scoped>
-  .bg {
-    font-family: "Microsoft YaHei UI", sans-serif;
+  @import "../assets/css/common.css";
+
+  header {
     width: 100%;
-    background: transparent linear-gradient(0deg, rgb(11, 65, 130) 1%, rgb(30, 136, 229) 100%) repeat scroll 0 0;
-    font-size: 62.5%;
+    height: 500px;
+    background-image: url(../assets/images/index-bg.png);
+    background-position: center center;
+    font-weight: 100;
   }
 
   .container {
-    max-width: 1200px;
-    width:100%;
-    margin:0 auto 0;
+    width: 1100px;
+    margin: 0 auto;
   }
 
-  header {
+  .header {
+    padding-top: 20px;
     height: 50px;
-    box-sizing: border-box;
-    padding-top:20px;
   }
 
   .logo {
-    float: left;
-    max-width: 150px;
-    width: 150px;
-    text-align: center;
-    line-height: 50px;
+    line-height: 40px;
   }
 
   .logo a {
-    font-size: 2em;
-    color: #FFFFFF;
+    font-size: 1.8rem;
     text-decoration: none;
-    font-weight: 300;
-  }
-
-  .menu {
-    float: right;
-    width: calc(100% - 200px);
-  }
-
-  .menu nav {
-    float: right;
-    width: 100%;
-    box-sizing: border-box;
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-
-  .menu nav ul {
-    width: auto;
-    float: right;
+    color: #E7E7E8;
   }
 
   .menu nav ul li {
     list-style: none;
   }
 
-  .menu nav li {
+  .menu nav ul {
+    width: 100%;
+  }
+
+  .menu li {
     width: auto;
     float: left;
-    padding-left: 5px;
-    padding-right: 5px;
-    height: 30px;
-    line-height: 30px;
-    font-size: 1.4em;
-    font-weight: 300;
-    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 1.4rem;
   }
 
-  .menu nav li a {
-    text-decoration: none;
-    color: #FFFFFF;
+  .menu li a {
     display: block;
-    width: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    height: 100%;
+    height: auto;
+    font-size: 1.5rem;
+    padding: 3px 10px 3px 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     border: 1px solid transparent;
+    color: #757881;
+    text-decoration: none;
   }
 
-  .menu nav li a:hover {
-    border: 1px solid #FFFFFF;
-    border-radius: 3px;
+  .menu li a:hover {
+    color: #E7E7E8;
+    border:1px solid #757881;
   }
 
-  main .intro {
-    margin-top: calc(100% / 5);
-    text-align: center;
+  .introduce {
+    color: #ffffff;
+    margin-top: 8%;
   }
-  main .intro h1 {
-    font-size: 5em;
+
+  .introduce h1 {
+    font-size: 5rem;
     font-weight: 100;
-    color: #FFFFFF;
   }
-  main .intro p {
-    color: #FFFFFF;
-    font-size: 1.8em;
+
+  .introduce p {
+    font-size: 1.8rem;
     font-weight: 100;
   }
 
