@@ -17,8 +17,8 @@ Vue.http.options.root = (process.env.NODE_ENV === 'production')
   : 'http://pay.dev/'
 
 // Object.keys(filters).forEach(k => Vue.filter(k, filters[k]));
-var App = Vue.extend({})
-var router = new VueRouter({
+let App = Vue.extend({})
+let router = new VueRouter({
   saveScrollPosition: true,
   suppressTransitionError: true
 })
@@ -27,8 +27,6 @@ RouterMap(router)
 
 // 如果本地已经存储了 Token 那么尝试刷新 如果刷新失败 打印出错误信息并让用户重新登陆
 Vue.http.interceptors.push((request, next) => {
-  console.log(request)
-  console.log('REQUEST START')
   next((resp) => {
     let token = window.localStorage.getItem('Token')
     if (token && resp.status === 401) {
@@ -42,7 +40,7 @@ Vue.http.interceptors.push((request, next) => {
         router.go('/auth/signin')
       })
     }
-    console.log('REQUEST FINISH')
+    return resp
   })
 })
 

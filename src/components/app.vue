@@ -30,12 +30,12 @@
 <script>
   export default {
     ready () {
-      this.setBgHeight()
+      this.init()
     },
     methods: {
-      setBgHeight () {
-        document.querySelector('html').style.height = '100%'
-        document.querySelector('body').style.height = '100%'
+      init () {
+        document.title = 'Pay Station'
+        document.querySelector('.bg').style.height = document.documentElement.clientHeight + 'px'
       }
     }
   }
@@ -44,7 +44,6 @@
   .bg {
     font-family: "Microsoft YaHei UI", sans-serif;
     width: 100%;
-    height: 100%;
     background: transparent linear-gradient(0deg, rgb(11, 65, 130) 1%, rgb(30, 136, 229) 100%) repeat scroll 0 0;
     font-size: 62.5%;
   }

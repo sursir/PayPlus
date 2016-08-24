@@ -10,9 +10,13 @@
       }
     },
     ready () {
+      this.init()
       this.getProfile()
     },
     methods: {
+      init () {
+        document.title = '应用列表'
+      },
       getProfile () {
         this.$http.get('user/profile').then((resp) => {
           console.log(resp)

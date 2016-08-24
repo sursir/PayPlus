@@ -6,10 +6,10 @@
 <script>
   export default {
     ready () {
-      this.setTitle()
+      this.init()
     },
     methods: {
-      setTitle () {
+      init () {
         document.title = '404 NOT FOUND'
       }
     }
