@@ -27,9 +27,19 @@ RouterMap(router)
 
 // 如果本地已经存储了 Token 那么尝试刷新 如果刷新失败 打印出错误信息并让用户重新登陆
 Vue.http.interceptors.push((request, next) => {
+  let token = window.localStorage.getItem('Token')
+  // 发送请求之前如果本地存在 Token 那么先把 Token 放到 Header
+  if (token) {
+    Vue.http.headers.common['Authorization'] = 'Bearer ' + token
+  }
+
   next((resp) => {
-    let token = window.localStorage.getItem('Token')
-    if (token && resp.status === 401) {
+    if (resp.status === 401) {
+      // 如果本地没有 Token 那么直接跳转到登陆界面
+      if (!token) {
+        router.go('/auth/signin')
+      }
+      // 尝试刷新 如果刷新失败 那么跳转到登陆界面
       Vue.http.put('auth/refresh').then((resp) => {
         if (resp.status === 200) {
           window.localStorage.setItem('Token', resp.data.resp.token)
@@ -40,24 +50,17 @@ Vue.http.interceptors.push((request, next) => {
         router.go('/auth/signin')
       })
     }
+
     return resp
   })
 })
 
-// 如果有 Token 了那么在 Header 里面跟上 Token
 router.beforeEach(function ({ to, next }) {
-  if (to.path !== '/auth/signin' && to.path !== '/' && to.path !== '/404') { //
-    let token = window.localStorage.getItem('Token')
-    if (token) {
-      Vue.http.headers.common['Authorization'] = 'Bearer ' + token
-    } else {
-      router.go('/auth/signin')
-    }
-  }
+  console.log('准备访问到: ' + to.path)
   next()
 })
 
 router.afterEach(function ({ to }) {
-  console.log('跳转到: ' + to.path)
+  console.log('成功访问到: ' + to.path)
 })
 router.start(App, 'body')

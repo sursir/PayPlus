@@ -1,25 +1,29 @@
 <template>
-  <h1>1</h1>
+  <h1>Apps</h1>
+  <ul>
+    <li>{{ apps.id }}</li>
+    <li>{{ apps.email }}</li>
+  </ul>
 </template>
 
 <script>
   export default {
     data () {
       return {
-        profile: ''
+        apps: ''
       }
     },
     ready () {
       this.init()
-      this.getProfile()
+      this.getApps()
     },
     methods: {
       init () {
         document.title = '应用列表'
       },
-      getProfile () {
+      getApps () {
         this.$http.get('user/profile').then((resp) => {
-          console.log(resp)
+          this.$set('apps', resp.data)
         }, (resp) => {
           console.log(resp)
         })
