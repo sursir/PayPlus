@@ -17,11 +17,12 @@
 </script>
 <style scoped>
   h1 {
-    font-size: 32px;
+    font-size: 3rem;
     margin-top: 50px;
     text-align: center;
   }
   p {
+    font-size: 1.8rem;
     text-align: center;
   }
 </style>
