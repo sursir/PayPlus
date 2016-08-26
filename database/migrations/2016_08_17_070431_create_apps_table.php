@@ -17,6 +17,8 @@ class CreateAppsTable extends Migration
 			$table->integer('uid')->index('idx_uid');
 			$table->uuid('uuid')->index('idx_uuid');
 			$table->string('name');
+			$table->string('notify');
+			$table->string('return');
 			$table->string('remark');
 			$table->timestamps();
 			$table->softDeletes();

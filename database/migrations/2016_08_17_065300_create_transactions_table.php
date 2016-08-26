@@ -19,8 +19,6 @@ class CreateTransactionsTable extends Migration
 			$table->string('out_trade_no')->unique();
 			$table->string('name');
 			$table->decimal('amount');
-			$table->string('notify');
-			$table->string('return');
 			$table->integer('gateway')->unsigned();
 			$table->tinyInteger('notified');
 			$table->timestamp('notified_at');

@@ -17,7 +17,6 @@ class CreateUsersTable extends Migration
 			$table->string('email')->unique()->index('idx_email');
 			$table->string('password');
 			$table->string('secret')->unique()->index('idx_app_secret');
-			$table->string('token')->unqiue()->index('idx_app_token');
 			$table->rememberToken();
 			$table->timestamps();
 			$table->softDeletes();

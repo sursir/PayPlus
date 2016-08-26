@@ -11,8 +11,8 @@ class AuthController extends Controller
 	private $_lang = [
 		'signin_incorrect' => '用户名或密码错误',
 		'token_incorrect'  => 'TOKEN 验证失败',
-		'signout_success' => '退出登陆成功',
-		'signout_error' => '退出登陆失败'
+		'signout_success'  => '退出登陆成功',
+		'signout_error'    => '退出登陆失败'
 	];
 	
 	
@@ -56,7 +56,7 @@ class AuthController extends Controller
 		try {
 			
 			if ($this->manager->invalidate($this->jwt->getToken())) {
-				return $this->json([
+				return $this->json('登陆成功', 200, [
 					'token' => $this->_lang['signout_success']
 				]);
 			}
@@ -67,7 +67,7 @@ class AuthController extends Controller
 			
 			
 		} catch (JWTException $e) {
-			return $this->json([], 500, $e->getMessage());
+			return $this->json($e->getMessage(), 500);
 		}
 	}
 	
@@ -83,9 +83,9 @@ class AuthController extends Controller
 			return $this->json([
 				'token' => $this->manager->refresh($this->jwt->getToken())->get()
 			]);
-
+			
 		} catch (JWTException $e) {
-			return $this->json([], 500, $e->getMessage());
+			return $this->json($e->getMessage(), 500);
 		}
 	}
 	

@@ -41,9 +41,9 @@ class Controller extends BaseController
 	 *
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 */
-	public function json(array $resp = [],
+	public function json($msg = '',
 						 $code = 200,
-						 $msg = '',
+						 array $resp = [],
 						 $headers = [],
 						 $options = 0)
 	{

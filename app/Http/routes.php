@@ -23,8 +23,9 @@ $app->group(['prefix' => 'auth', 'namespace' => '\App\Http\Controllers'], functi
 	
 });
 
-$app->group(['prefix' => 'user', 'middleware' => 'auth', 'namespace' => '\App\Http\Controllers'], function () use ($app) {
+$app->group(['prefix' => 'app', 'middleware' => 'auth', 'namespace' => '\App\Http\Controllers'], function () use ($app) {
 	
-	$app->get('/profile', 'UserController@profile');
+	$app->post('/create', 'AppController@create');
+	$app->get('/listing', 'AppController@listing');
 	
 });
