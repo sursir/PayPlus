@@ -33,15 +33,17 @@ class AuthController extends Controller
 		try {
 			
 			if ($token = $this->jwt->attempt($request->only(['email', 'password']))) {
-				return $this->json([
-					'token' => $token
-				]);
+				return $this->json(
+					'登陆成功',
+					200,
+					['token' => $token]
+				);
 			}
 			
-			return $this->json([], 403, $this->_lang['signin_incorrect']);
+			return $this->json($this->_lang['signin_incorrect'], 403);
 			
 		} catch (JWTException $e) {
-			return $this->json([], $e->getCode(), $e->getMessage());
+			return $this->json($e->getMessage(), 500);
 		}
 		
 	}
