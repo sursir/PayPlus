@@ -1,6 +1,20 @@
 <template>
+  <div class="bg"></div>
   <div class="container">
-    111
+    <div class="pull-left two">
+      <div class="menu">
+        <h1>CONTROL</h1>
+        <ul>
+          <li><a href="#">11111</a></li>
+          <li><a href="#">22222</a></li>
+          <li><a href="#">33333</a></li>
+          <li><a href="#">44444</a></li>
+          <li><a href="#">55555</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pull-right ten">222</div>
+    <div class="clearfix"></div>
   </div>
 </template>
 
@@ -30,10 +44,5 @@
   }
 </script>
 <style scoped>
-  @import "../../assets/css/common.css";
 
-  .container {
-    background-color: #fff;
-    height: auto;
-  }
 </style>

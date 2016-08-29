@@ -1,0 +1,31 @@
+html, body {
+    font-family: "Microsoft YaHei UI", 微软雅黑, 黑体, sans-serif;
+    font-weight: 100;
+    font-size: 62.5%;
+}
+
+/* override .container */
+.container {
+    max-width: 1100px;
+}
+/* override button */
+.button, button, input[type="submit"], input[type="reset"], input[type="button"] {
+    font-weight: 100;
+}
+/* override hr */
+hr.split {
+    margin-top:0;
+    margin-bottom: 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
