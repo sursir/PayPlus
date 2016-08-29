@@ -85,7 +85,7 @@
         }, (resp) => {
           this.$set('error', resp.data.msg)
           let that = this
-          setTimeout(function () {
+          setTimeout(() => {
             that.$set('error', false)
           }, 2000)
         })
