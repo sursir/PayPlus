@@ -92,6 +92,19 @@
   </footer>
 
 </template>
+
+<script>
+  export default {
+    ready () {
+      this.init()
+    },
+    methods: {
+      init () {
+        document.title = 'Pay Station'
+      }
+    }
+  }
+</script>
 <style scoped>
   @import "../assets/css/normalize/normalize.css";
   @import "../assets/css/skeleton/skeleton.css";
