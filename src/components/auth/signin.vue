@@ -30,7 +30,9 @@
             </div>
           </div>
           <div class="u-full-width">
-            <button class="u-full-width" type="button" v-on:click="signin" :disabled="!$validation.valid">登 录</button>
+            <button v-bind:class="['u-full-width', $validation.valid ? 'button-primary' : '']" type="button"
+                    v-on:click="signin" :disabled="!$validation.valid">登 录
+            </button>
           </div>
         </form>
       </validator>

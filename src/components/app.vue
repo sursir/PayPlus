@@ -12,7 +12,7 @@
                 <li><a v-link="{ path: '/' }">首 页</a></li>
                 <li><a v-link="{ path: '/download' }">下 载</a></li>
                 <li><a v-link="{ path: '/docs' }">文 档</a></li>
-                <li><a v-link="{ path: '/auth/signin' }">登 陆</a></li>
+                <li><a v-link="{ path: '/auth/signin' }">登 录</a></li>
               </ul>
             </nav>
           </div>
