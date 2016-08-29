@@ -14,7 +14,7 @@ Vue.http.options.emulateHTTP = true
 // Set API Domain
 Vue.http.options.root = (process.env.NODE_ENV === 'production')
   ? 'https://pay.api.cxsir.com'
-  : 'http://pay.dev/'
+  : 'http://pay.dev'
 
 // Object.keys(filters).forEach(k => Vue.filter(k, filters[k]));
 let App = Vue.extend({})

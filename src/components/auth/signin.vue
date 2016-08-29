@@ -1,6 +1,5 @@
 <template>
   <div class="bg"></div>
-  <div class="clearfix"></div>
   <div class="signin-box">
     <div class="signin-header">
       <div class="colorful-box clearfix">
@@ -96,24 +95,23 @@
 </script>
 <style scoped>
   @import "../../assets/css/common.css";
-
   .bg {
-    background-image: url(../../assets/images/bg.jpg);
-    background-position: center center;
-    height: 100%;
-    width: 100%;
     position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    background-image: url('../../assets/images/bg.jpg');
     z-index: -999;
   }
-
   .signin-box {
     width: 400px;
     height: auto;
     background-color: #fff;
-    margin: 10% auto 0;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+    display: inline-block;
+    margin-top: 10%;
+    margin-left: calc(calc(100% / 2) - 200px);
   }
 
   .signin-header {
