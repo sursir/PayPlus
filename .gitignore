@@ -1,4 +1,9 @@
 /.idea
 /vendor
-.env
 /storage/framework/cache/
+node_modules/
+bootstrap/cache/
+.env.*.php
+.env.php
+.env
+.rocketeer/
