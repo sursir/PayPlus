@@ -1,2 +1,4 @@
-# easypay
-Easy Pay  Backend code.
+## PayPlus
+
+- [Easy Pay  Backend code.](https://github.com/PayPlus/PayPlus)
+
