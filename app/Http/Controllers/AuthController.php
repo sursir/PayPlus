@@ -34,7 +34,7 @@ class AuthController extends Controller
 			
 			if ($token = $this->jwt->attempt($request->only(['email', 'password']))) {
 				return $this->json(
-					'登陆成功',
+					'success',
 					200,
 					['token' => $token]
 				);
